@@ -1,0 +1,16 @@
+<table>
+<tr>
+<th>ID</th>
+<th>タイトル</th>
+<th>開始日</th>
+<th>終了日</th>
+<th>終日</th>
+<th>更新日時</th>
+<th></th>
+</tr>
+
+<%= render @posts %>
+</table>
+
+<p>予定合計 <%= @posts.count %>件</p>
+<p>本日の日付 <%= Date.curren.strftime("%Y/%m/%d") %>
