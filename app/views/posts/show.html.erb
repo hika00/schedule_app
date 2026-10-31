@@ -1,0 +1,24 @@
+<%= link_to "← 一覧に戻る", posts_path %>
+
+<h2><%= @post.title %></h2>
+
+<%= link_to "編集", edit_post_path(@post) %>
+
+<table>
+<tr>
+<th>開始日</th>
+<td><%= @post.start_date.strftime("%Y/%m/%d") %></td>
+</tr>
+<tr>
+<th>終了日</th>
+<td><%= @post.end_date.strftime("%Y/%m/%d") %></td>
+</tr>
+<tr>
+<th>終日</th>
+<td><%= @post.all_day == true ? "○" : "" %></td>
+</tr>
+<tr>
+<th>スケジュールメモ</th>
+<td><%= @post.body %></td>
+</tr>
+</table>
