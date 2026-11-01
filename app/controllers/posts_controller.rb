@@ -19,8 +19,9 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to posts_path
+      redirect_to posts_path, notice: "予定を作成しました"
     else
+      flash.now[:alert] = "予定の作成に失敗しました"
       render :new, status: :unprocessable_entity
     end
   end
@@ -35,8 +36,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     
     if @post.update(post_params)
-      redirect_to posts_path
+      redirect_to posts_path, notice: "予定を更新しました"
     else
+      flash.now[:alert] = "予定の更新に失敗しました"
       render :edit, status: :unprocessable_entity
     end
   end
@@ -44,8 +46,11 @@ class PostsController < ApplicationController
 #削除
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    if @post.destroy
+      redirect_to posts_path, notice: "予定を削除しました"
+    else
+      redirect_to posts_path, alert: "予定の削除に失敗しました"
+    end
   end
 
   private
