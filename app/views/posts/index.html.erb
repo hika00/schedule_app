@@ -1,0 +1,21 @@
+<div class="header-container">
+<h2>予定一覧</h2>
+<%= link_to "＋新規追加", new_post_path, class: "btn-new" %>
+</div>
+
+<table>
+<tr>
+<th>ID</th>
+<th>タイトル</th>
+<th>開始日</th>
+<th>終了日</th>
+<th>終日</th>
+<th>更新日時</th>
+<th></th>
+</tr>
+
+<%= render @posts %>
+</table>
+
+<p>予定合計 <%= @posts.count %>件</p>
+<p>本日の日付 <%= Date.current.strftime("%Y/%m/%d") %>
